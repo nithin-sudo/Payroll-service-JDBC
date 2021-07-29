@@ -29,13 +29,13 @@ public class EmployeePayrollDBService
     private static void listDrivers() {
         Enumeration<Driver> driverList = DriverManager.getDrivers();
         while (driverList.hasMoreElements()) {
-            Driver driverClass = (Driver) driverList.nextElement();
+            Driver driverClass = driverList.nextElement();
             System.out.println(" " + driverClass.getClass().getName());
         }
     }
     public ArrayList<EmployeePayrollData> readData() {
         String sql = "SELECT * FROM employee_payroll";
-        ArrayList<EmployeePayrollData> employeePayrollList = new ArrayList<EmployeePayrollData>();
+        ArrayList<EmployeePayrollData> employeePayrollList = new ArrayList<>();
         try {
             Connection connection = this.getConnection();
             Statement statement = connection.createStatement();
@@ -73,7 +73,7 @@ public class EmployeePayrollDBService
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 double BasicPay = resultSet.getDouble("BasicPay");
-                LocalDate startDate = null;
+                LocalDate startDate;
                 startDate = resultSet.getDate("start").toLocalDate();
                 employeePayrollDataList.add(new EmployeePayrollData(id, name, BasicPay, startDate));
             }
