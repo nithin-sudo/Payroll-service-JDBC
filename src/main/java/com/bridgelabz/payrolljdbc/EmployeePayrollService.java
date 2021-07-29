@@ -39,4 +39,8 @@ public class EmployeePayrollService {
         if (employeePayrollData != null)
             employeePayrollData.BasicPay = BasicPay;
     }
+    public List<EmployeePayrollData> retrieveEmployeesForGivenDataRange(String startDate, String endDate) {
+        List<EmployeePayrollData> employeePayrollDataList = employeePayrollDBService.retrieveEmployeePayrollDataRange(startDate, endDate);
+        return employeePayrollDataList;
+    }
 }
