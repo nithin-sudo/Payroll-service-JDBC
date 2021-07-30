@@ -12,8 +12,14 @@ public class EmployeePayrollData {
     public EmployeePayrollData(int id, String name, double BasicPay, LocalDate startDate) {
         this.id = id;
         this.name = name;
-        this.BasicPay= BasicPay;
+        this.BasicPay = BasicPay;
         this.startDate = startDate;
+    }
+
+    public EmployeePayrollData(int id, String name, double BasicPay) {
+        this.id = id;
+        this.name = name;
+        this.BasicPay = BasicPay;
     }
 
     @Override
