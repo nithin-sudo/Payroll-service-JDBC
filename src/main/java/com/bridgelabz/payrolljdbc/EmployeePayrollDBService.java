@@ -238,4 +238,25 @@ public class EmployeePayrollDBService {
             throwable.printStackTrace();
         }
     }
+    public EmployeePayrollData addEmployeeToPayroll(String employeeName, String Department,String gender, double BasicPay, LocalDate start) {
+        int employeeId = -1;
+        EmployeePayrollData employeePayrollData = null;
+        String sql = String.format("INSERT INTO employee_payroll (name,Department gender, BasicPay, start) " +
+                "VALUES('%s', '%s','%s', '%s', '%s');", employeeName,Department,gender, BasicPay, start);
+
+        try(Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            int rowAffected = statement.executeUpdate(sql, statement.RETURN_GENERATED_KEYS);
+            if (rowAffected == 1) {
+                ResultSet resultSet = statement.getGeneratedKeys();
+                if (resultSet.next())
+                    employeeId = resultSet.getInt(1);
+            }
+            employeePayrollData = new EmployeePayrollData(employeeId, employeeName, BasicPay, start);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employeePayrollData;
+    }
+
 }

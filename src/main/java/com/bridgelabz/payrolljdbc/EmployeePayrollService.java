@@ -1,5 +1,6 @@
 package com.bridgelabz.payrolljdbc;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -91,7 +92,9 @@ public class EmployeePayrollService {
             new EmployeePayrollFileIOService().writeData(employeePayrollDataList);
         }
     }
-
+    public void addEmployeeToPayroll(String employeeName, String Department,String gender, double BasicPay, LocalDate start) {
+        employeePayrollDataList.add(employeePayrollDBService.addEmployeeToPayroll(employeeName,Department, gender, BasicPay, start));
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Payroll service program!");
         ArrayList<EmployeePayrollData> employeePayrollList = new ArrayList<>();

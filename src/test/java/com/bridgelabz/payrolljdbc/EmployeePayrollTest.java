@@ -3,6 +3,7 @@ package com.bridgelabz.payrolljdbc;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -79,5 +80,14 @@ public class EmployeePayrollTest {
         employeePayrollService.readEmployeePayrollData(DB_IO);
         Map<String, Integer> countNameByGender = employeePayrollService.readCountNameByGender(DB_IO);
         Assertions.assertTrue(countNameByGender.get("M").equals(3) && countNameByGender.get("F").equals(3));
+    }
+
+    @Test
+    public void givenNewEmployee_whenAdded_ShouldSyncWithDB() {
+        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+        employeePayrollService.readEmployeePayrollData(DB_IO);
+        employeePayrollService.addEmployeeToPayroll("khyathi", "Sb","F", 400000.00, LocalDate.now());
+        boolean result = employeePayrollService.checkEmployeePayrollSyncWithDB("khyathi");
+        Assertions.assertTrue(result);
     }
 }

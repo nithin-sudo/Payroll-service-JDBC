@@ -18,7 +18,7 @@ public class EmployeePayrollFileIOService {
             empBuffer.append(employeeDataString);
         });
         try {
-            Files.write(Paths.get(PAYROLL_FILE_NAME), empBuffer.toString().getBytes());//StandardCharsets.UTF_8
+            Files.write(Paths.get(PAYROLL_FILE_NAME), empBuffer.toString().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

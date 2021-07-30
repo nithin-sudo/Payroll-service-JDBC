@@ -24,7 +24,7 @@ public class EmployeePayrollData {
 
     @Override
     public String toString() {
-        return "EmployeePayrollData{" + "id=" + id + ", name='" + name + '\'' + ", salary=" + BasicPay + ", startDate="
+        return "EmployeePayrollData{" + "id=" + id + ", name='" + name + '\'' + ", BasicPay=" + BasicPay + ", startDate="
                 + startDate + '}';
     }
 
